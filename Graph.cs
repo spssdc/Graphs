@@ -22,6 +22,7 @@ namespace Graphs
                 this.Start = s;
                 this.End = e;
                 this.Weight = w;
+                Console.WriteLine("Adding: " + s + " to " + e + " weight " + w);
             }
         }
         public Graph()
@@ -129,6 +130,7 @@ namespace Graphs
                     }
                     currentNode = toProcess.Dequeue();
                 }
+                visited.Add(currentNode);
                 // Output the BFS result
                 Console.WriteLine("Output visited nodes");
                 foreach (string os in visited)
