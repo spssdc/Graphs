@@ -23,20 +23,21 @@ namespace Graphs
 
             // Add the edges
             Console.WriteLine("\nAdding Edges\n");
-            myGraph.AddEdge("A", "B", 700);
-            myGraph.AddEdge("A", "C", 500);
-            myGraph.AddEdge("A", "E", 600);
             myGraph.AddEdge("B", "D", 400);
-            myGraph.AddEdge("C", "D", 200);
-            myGraph.AddEdge("C", "E", 200);
+            myGraph.AddEdge("B", "A", 700);
+            myGraph.AddEdge("D", "C", 200);
             myGraph.AddEdge("C", "F", 300);
-            myGraph.AddEdge("E", "F", 75);
+            myGraph.AddEdge("C", "E", 200);
+            myGraph.AddEdge("A", "C", 500);
             myGraph.AddEdge("E", "G", 500);
-
+            myGraph.AddEdge("A", "E", 600);
 
             Console.WriteLine("\nGraph created, algorithms next...");
             Console.WriteLine("BFS from B...");
             myGraph.BFS("B");
+            Console.WriteLine("\nGraph created, algorithms next...");
+            Console.WriteLine("DFS from B...");
+            myGraph.DFS("B");
             Console.WriteLine("\nShortest path from B to G");
             myGraph.Dijkstra("B", "G");
         }

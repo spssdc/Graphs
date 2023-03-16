@@ -9,6 +9,8 @@ namespace Graphs
         private readonly List<string> nodeNames = new List<string>();
         // edgeConnections is a dictionary of nodeName to (start, end, weight) edge list
         private readonly Dictionary<string,List<Edge>> edgeConnections = new Dictionary<string,List<Edge>>();
+        // Add visited list
+        private List<string> visited;
 
         // Create a private class to implement edges in the graph
         private class Edge
@@ -145,8 +147,28 @@ namespace Graphs
 
         }
 
-        // Dijkstras shortest path algorithm
-        public void Dijkstra(string start, string goal)
+        // Recursive DFS
+        public void DFS(string s)
+        {
+            visited = new List<string>();
+            DFShelper(visited, s);
+        }
+        private void DFShelper(List<string> visited, string s)
+        {
+            Console.WriteLine(s);
+            visited.Add(s);
+            List<Edge> connections = edgeConnections[s];
+            foreach (Edge e in connections)
+            {
+                if (!visited.Contains(e.End))
+                {
+                    DFShelper(visited, e.End);
+                }
+            }
+        }
+
+    // Dijkstras shortest path algorithm
+    public void Dijkstra(string start, string goal)
         {
             // check start and goal nodes exist, otherwise throw exception
             if (nodeNames.Contains(start) && nodeNames.Contains(goal))
